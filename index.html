@@ -1,0 +1,1436 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pempek Adhwan Medan - Pempek Asli Palembang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #d32f2f;
+            color: white;
+        }
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(219, 112, 147, 0.9) 0%, rgba(199, 21, 133, 0.9) 50%, rgba(153, 0, 0, 0.9) 100%);
+        }
+        .btn-red {
+            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+            box-shadow: 0 10px 25px rgba(198, 40, 40, 0.3);
+        }
+        .btn-red:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(198, 40, 40, 0.4);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.02);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid #c62828;
+        }
+        .portfolio-item {
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.03);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .slide-in {
+            animation: slideIn 1s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(198, 40, 40, 0.5);
+        }
+        .glow:hover {
+            box-shadow: 0 0 30px rgba(198, 40, 40, 0.8);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c62828;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #b71c1c;
+        }
+        .ripple {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+        .ripple:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+        .ripple:active:after {
+            transform: scale(0, 0);
+            opacity: .3;
+            transition: 0s;
+        }
+        .stagger-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .stagger-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: #f3f4f6;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e53935, #c62828);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        .theme-selector {
+            transition: all 0.3s ease;
+        }
+        .theme-selector:hover {
+            transform: scale(1.05);
+        }
+        .count-up {
+            counter-reset: count;
+            animation: countUp 2s ease-in-out forwards;
+        }
+        @keyframes countUp {
+            from { counter-increment: 0; }
+            to { counter-increment: 100; }
+        }
+        .floating-heart {
+            animation: floatingHeart 3s ease-in-out infinite;
+        }
+        @keyframes floatingHeart {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .rainbow {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            background-size: 1400% 100%;
+            animation: rainbow 10s linear infinite;
+        }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .wedding-rings {
+            animation: rotateRings 20s linear infinite;
+        }
+        @keyframes rotateRings {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .testimonial-carousel {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .testimonial-item {
+            scroll-snap-align: start;
+        }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fade-in.active {
+            opacity: 1;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .cursor-fx {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s;
+        }
+        .cursor-fx-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #c62828;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s;
+        }
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        .dark-mode .btn-red {
+            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+        }
+        .dark-mode .bg-white {
+            background-color: #1a1a1a;
+        }
+        .dark-mode .text-gray-800 {
+            color: #f5f5f5;
+        }
+        .dark-mode .text-gray-600 {
+            color: #cccccc;
+        }
+        .dark-mode .text-gray-500 {
+            color: #aaaaaa;
+        }
+        .dark-mode .text-gray-400 {
+            color: #777777;
+        }
+        .dark-mode .border-gray-200 {
+            border-color: #333333;
+        }
+        .dark-mode .bg-gray-50 {
+            background-color: #2d2d2d;
+        }
+        .dark-mode .bg-gray-800 {
+            background-color: #1a1a1a;
+        }
+        .dark-mode .bg-rose-100 {
+            background-color: #2d2d2d;
+        }
+        .dark-mode .bg-rose-600 {
+            background-color: #e53935;
+        }
+        .dark-mode .bg-rose-700 {
+            background-color: #c62828;
+        }
+        .dark-mode .hover\:bg-rose-700:hover {
+            background-color: #c62828;
+        }
+        .dark-mode .hover\:text-rose-400:hover {
+            color: #e53935;
+        }
+        .dark-mode .hover\:bg-rose-500:hover {
+            background-color: #e53935;
+        }
+        .dark-mode .hover\:bg-gray-300:hover {
+            background-color: #444444;
+        }
+        .dark-mode .hover\:text-white:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white custom-scrollbar">
+    <!-- Cursor Effects -->
+    <div class="cursor-fx" id="cursor"></div>
+    <div class="cursor-fx-dot" id="cursor-dot"></div>
+    <!-- Header -->
+    <header x-data="{ isOpen: false, darkMode: false }" class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <img src="https://i.imgur.com/6KwJXkA.png" alt="Pempek Adhwan Logo" class="w-12 h-12">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800 playfair">Pempek Adhwan</h1>
+                        <p class="text-sm text-gray-600">Medan</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors relative group">
+                        Beranda
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors relative group">
+                        Tentang Kami
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#menu" class="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors relative group">
+                        Menu
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#order" class="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors relative group">
+                        Pesan Online
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#gallery" class="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors relative group">
+                        Galeri
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-sm font-medium text-gray-700 hover:text-red-600 transition-colors relative group">
+                        Kontak
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button @click="darkMode = !darkMode" class="text-gray-700 hover:text-red-600 transition-colors">
+                        <i class="fas fa-moon" x-show="!darkMode"></i>
+                        <i class="fas fa-sun" x-show="darkMode"></i>
+                    </button>
+                    <button @click="isOpen = !isOpen" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-10" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-10" class="md:hidden bg-white border-t border-gray-200">
+                <div class="px-4 py-2 space-y-2">
+                    <a href="#home" @click="isOpen = false" class="block py-2 text-gray-700 hover:text-red-600">Beranda</a>
+                    <a href="#about" @click="isOpen = false" class="block py-2 text-gray-700 hover:text-red-600">Tentang Kami</a>
+                    <a href="#menu" @click="isOpen = false" class="block py-2 text-gray-700 hover:text-red-600">Menu</a>
+                    <a href="#order" @click="isOpen = false" class="block py-2 text-gray-700 hover:text-red-600">Pesan Online</a>
+                    <a href="#gallery" @click="isOpen = false" class="block py-2 text-gray-700 hover:text-red-600">Galeri</a>
+                    <a href="#contact" @click="isOpen = false" class="block py-2 text-gray-700 hover:text-red-600">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-red-200 rounded-full opacity-30 animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-pink-200 rounded-full opacity-30 animate-pulse" style="animation-delay: 1s"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-200 rounded-full opacity-20 animate-pulse" style="animation-delay: 2s"></div>
+            <div class="absolute top-20 left-20 w-32 h-32 bg-pink-300 rounded-full opacity-40 floating"></div>
+            <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-red-300 rounded-full opacity-50 floating" style="animation-delay: 0.5s"></div>
+            <div class="absolute bottom-20 left-1/3 w-20 h-20 bg-purple-300 rounded-full opacity-60 floating" style="animation-delay: 1.5s"></div>
+        </div>
+        <div class="relative z-10 h-full flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="text-center text-white">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight playfair animate-fade-in">
+                        Pempek Asli Palembang, Kini di <span class="text-white">Medan!</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in" style="animation-delay: 0.3s">
+                        Nikmati cita rasa autentik pempek dari Palembang yang kini hadir di Medan dengan harga ramah dan kualitas terjamin.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay: 0.6s">
+                        <button id="consult-btn" class="bg-white text-red-600 hover:bg-red-50 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg ripple">
+                            <i class="fas fa-comments mr-2"></i> Konsultasi Gratis
+                        </button>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-gray-800 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 ripple">
+                            <i class="fas fa-images mr-2"></i> Lihat Galeri
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <a href="#services" class="text-white hover:text-red-200 transition-colors animate-bounce">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="text-center stagger-fade-in" style="animation-delay: 0.1s">
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2 count-up" data-target="500">0</div>
+                    <div class="flex items-center justify-center text-gray-600 mb-2">
+                        <i class="fas fa-heart mr-2"></i>
+                        Pelanggan Puas
+                    </div>
+                </div>
+                <div class="text-center stagger-fade-in" style="animation-delay: 0.2s">
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2 count-up" data-target="10">0</div>
+                    <div class="flex items-center justify-center text-gray-600 mb-2">
+                        <i class="fas fa-clock mr-2"></i>
+                        Tahun Pengalaman
+                    </div>
+                </div>
+                <div class="text-center stagger-fade-in" style="animation-delay: 0.3s">
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2">98%</div>
+                    <div class="flex items-center justify-center text-gray-600 mb-2">
+                        <i class="fas fa-star mr-2"></i>
+                        Rating Kepuasan
+                    </div>
+                </div>
+                <div class="text-center stagger-fade-in" style="animation-delay: 0.4s">
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2 count-up" data-target="25">0</div>
+                    <div class="flex items-center justify-center text-gray-600 mb-2">
+                        <i class="fas fa-users mr-2"></i>
+                        Vendor Terpercaya
+                    </div>
+                </div>
+                <div class="text-center stagger-fade-in" style="animation-delay: 0.5s">
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2 count-up" data-target="150">0</div>
+                    <div class="flex items-center justify-center text-gray-600 mb-2">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        Order Bulanan
+                    </div>
+                </div>
+                <div class="text-center stagger-fade-in" style="animation-delay: 0.6s">
+                    <div class="text-4xl md:text-5xl font-bold text-red-600 mb-2 count-up" data-target="50">0</div>
+                    <div class="flex items-center justify-center text-gray-600 mb-2">
+                        <i class="fas fa-briefcase mr-2"></i>
+                        Tim Profesional
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-20 bg-gradient-to-br from-red-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 playfair">Mengapa Memilih Pempek Adhwan?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Kami menawarkan pengalaman kuliner yang tak terlupakan dengan pendekatan personal dan profesional.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow duration-300 card-hover stagger-fade-in" style="animation-delay: 0.1s">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                        <i class="fas fa-bullseye text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Cita Rasa Autentik</h3>
+                    <p class="text-gray-600">Setiap pempek dibuat dengan resep asli dari Palembang untuk memastikan cita rasa yang otentik.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow duration-300 card-hover stagger-fade-in" style="animation-delay: 0.2s">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Kualitas Premium</h3>
+                    <p class="text-gray-600">Kami menggunakan bahan-bahan berkualitas tinggi untuk setiap produk kami.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow duration-300 card-hover stagger-fade-in" style="animation-delay: 0.3s">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                        <i class="fas fa-lightbulb text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Inovasi Terus Menerus</h3>
+                    <p class="text-gray-600">Kami selalu mengikuti tren terbaru dalam dunia kuliner Indonesia.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow duration-300 card-hover stagger-fade-in" style="animation-delay: 0.4s">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                        <i class="fas fa-user-tie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Profesional Berpengalaman</h3>
+                    <p class="text-gray-600">Tim kami terdiri dari profesional berpengalaman di bidangnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="stagger-fade-in" style="animation-delay: 0.1s">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 playfair">Tentang Kami</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Pempek Adhwan Medan adalah kuliner khas Palembang yang kini hadir di Medan, menyajikan cita rasa autentik dengan harga ramah.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Alamat</h3>
+                                <p class="text-gray-600">Jl. Mansyurdin Gg. Anggrek Merah 6B, Medan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Telepon/WA</h3>
+                                <p class="text-gray-600">081263388109</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Website</h3>
+                                <p class="text-gray-600">msha.ke/pempekadhwanmedan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="font-semibold text-gray-800 mb-4">Ikuti Kami</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/pempekadhwan.medan/" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@pempekadhwan.medan" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.facebook.com/people/Pempekadhwan-Mdn/61577332456903/" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-8 stagger-fade-in" style="animation-delay: 0.2s">
+                    <img src="https://images.unsplash.com/photo-1581840285708-800640781446?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Adhwan Kitchen" class="w-full h-64 object-cover rounded-lg mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 playfair">Proses Pembuatan</h3>
+                    <p class="text-gray-600 mb-4">
+                        Setiap pempek dibuat secara manual oleh ahli pembuat pempek yang telah berpengalaman lebih dari 10 tahun.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Kami menggunakan bahan-bahan segar setiap hari untuk memastikan kualitas terbaik bagi pelanggan kami.
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-red-100 p-2 rounded-full text-red-600">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="ml-3 text-gray-600">Produk bebas MSG dan pengawet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gradient-to-br from-red-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 playfair">Menu Kami</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Temukan berbagai variasi pempek yang lezat dan unik hanya di Pempek Adhwan Medan.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl service-card stagger-fade-in" style="animation-delay: 0.1s">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1519741347686-c1e062f89be0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Lenjer" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pempek Lenjer</h3>
+                            <p class="text-gray-600 mb-6">Pempek tradisional dengan isian ikan tenggiri yang lezat.</p>
+                            <div class="text-3xl font-bold text-red-600 mb-6">Rp 13.000</div>
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-info-circle mr-2"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl service-card stagger-fade-in" style="animation-delay: 0.2s">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Kapal Selam" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pempek Kapal Selam</h3>
+                            <p class="text-gray-600 mb-6">Pempek dengan isian telur puyuh yang khas dan lezat.</p>
+                            <div class="text-3xl font-bold text-red-600 mb-6">Rp 18.000</div>
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-info-circle mr-2"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl service-card stagger-fade-in" style="animation-delay: 0.3s">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Cumi" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pempek Cumi</h3>
+                            <p class="text-gray-600 mb-6">Pempek dengan isian cumi yang gurih dan lezat.</p>
+                            <div class="text-3xl font-bold text-red-600 mb-6">Rp 13.000</div>
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-info-circle mr-2"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl service-card stagger-fade-in" style="animation-delay: 0.4s">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1518998053901-53434c858544?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Udang" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pempek Udang</h3>
+                            <p class="text-gray-600 mb-6">Pempek dengan isian udang yang gurih dan lezat.</p>
+                            <div class="text-3xl font-bold text-red-600 mb-6">Rp 13.000</div>
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-info-circle mr-2"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl service-card stagger-fade-in" style="animation-delay: 0.5s">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1534350493588-07e5c94c545e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Sosis" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pempek Sosis</h3>
+                            <p class="text-gray-600 mb-6">Pempek dengan isian sosis yang lezat dan nikmat.</p>
+                            <div class="text-3xl font-bold text-red-600 mb-6">Rp 10.000</div>
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-info-circle mr-2"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Item 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl service-card stagger-fade-in" style="animation-delay: 0.6s">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Mentai" class="w-full h-64 md:h-full object-cover">
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Pempek Mentai</h3>
+                            <p class="text-gray-600 mb-6">Pempek dengan topping keju, nori, atau pedas yang lezat.</p>
+                            <div class="text-3xl font-bold text-red-600 mb-6">Rp 22.000</div>
+                            <div class="flex space-x-4">
+                                <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-full font-semibold transition-colors ripple">
+                                    <i class="fas fa-info-circle mr-2"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Order Section -->
+    <section id="order" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 playfair">Pesan Online</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Pesan pempek favorit Anda dengan mudah melalui layanan pesan antar terpercaya.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- GoFood Button -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow duration-300 card-hover stagger-fade-in" style="animation-delay: 0.1s">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">GoFood</h3>
+                    <p class="text-gray-600 mb-6">Pesanan cepat dan praktis melalui platform GoFood.</p>
+                    <a href="https://gofood.co.id/medan/restaurant/pempek-adhwan-3cfe3618-53df-44ee-9c7e-23497a25f1d6" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold transition-colors ripple">
+                        <i class="fas fa-arrow-right mr-2"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <!-- GrabFood Button -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-shadow duration-300 card-hover stagger-fade-in" style="animation-delay: 0.2s">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">GrabFood</h3>
+                    <p class="text-gray-600 mb-6">Pesanan cepat dan praktis melalui platform GrabFood.</p>
+                    <a href="https://food.grab.com/id/id/restaurant/online-delivery/6-C7KFBFATEFMUEN?sourceID=20250722_100932_7322bf845c4a48de83abd966a0dc3a60_MEXMPS" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold transition-colors ripple">
+                        <i class="fas fa-arrow-right mr-2"></i> Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gradient-to-br from-red-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 playfair">Galeri Kami</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Lihat beberapa foto dari proses pembuatan dan hasil akhir pempek kami.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg portfolio-item stagger-fade-in" style="animation-delay: 0.1s">
+                    <img src="https://images.unsplash.com/photo-1519741347686-c1e062f89be0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Lenjer" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Pempek Lenjer</h3>
+                            <p class="flex items-center text-sm mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Medan, Sumatera Utara
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span>150 Tamu</span>
+                                <span>•</span>
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg portfolio-item stagger-fade-in" style="animation-delay: 0.2s">
+                    <img src="https://images.unsplash.com/photo-1518998053901-53434c858544?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Kapal Selam" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Pempek Kapal Selam</h3>
+                            <p class="flex items-center text-sm mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Medan, Sumatera Utara
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span>200 Tamu</span>
+                                <span>•</span>
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg portfolio-item stagger-fade-in" style="animation-delay: 0.3s">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Cumi" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Pempek Cumi</h3>
+                            <p class="flex items-center text-sm mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Medan, Sumatera Utara
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span>120 Tamu</span>
+                                <span>•</span>
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="far fa-star text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg portfolio-item stagger-fade-in" style="animation-delay: 0.4s">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Udang" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Pempek Udang</h3>
+                            <p class="flex items-center text-sm mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Medan, Sumatera Utara
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span>180 Tamu</span>
+                                <span>•</span>
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg portfolio-item stagger-fade-in" style="animation-delay: 0.5s">
+                    <img src="https://images.unsplash.com/photo-1534350493588-07e5c94c545e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Sosis" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Pempek Sosis</h3>
+                            <p class="flex items-center text-sm mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Medan, Sumatera Utara
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span>100 Tamu</span>
+                                <span>•</span>
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="far fa-star text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg portfolio-item stagger-fade-in" style="animation-delay: 0.6s">
+                    <img src="https://images.unsplash.com/photo-1518998053901-53434c858544?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pempek Mentai" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Pempek Mentai</h3>
+                            <p class="flex items-center text-sm mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Medan, Sumatera Utara
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <span>150 Tamu</span>
+                                <span>•</span>
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gradient-to-br from-red-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 playfair">Apa Kata Pelanggan Kami</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Dengarkan pengalaman pelanggan yang telah mencoba pempek kami.
+                </p>
+            </div>
+            <!-- Featured Testimonials -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 relative testimonial-card stagger-fade-in" style="animation-delay: 0.1s">
+                    <div class="absolute -top-4 -left-4 bg-red-600 text-white p-3 rounded-full">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="pt-6">
+                        <div class="flex mb-4">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6 italic">"Pempek Adhwan Medan benar-benar luar biasa! Rasanya sangat autentik seperti yang saya cicipi di Palembang. Saya sangat merekomendasikan tempat ini kepada semua orang yang ingin mencoba pempek asli."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Siti" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold text-gray-800">Siti</div>
+                                <div class="text-sm text-gray-500">Pelanggan Setia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 relative testimonial-card stagger-fade-in" style="animation-delay: 0.2s">
+                    <div class="absolute -top-4 -left-4 bg-red-600 text-white p-3 rounded-full">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="pt-6">
+                        <div class="flex mb-4">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6 italic">"Saya sangat senang dengan kualitas pempek yang saya dapatkan. Bahan-bahannya segar dan rasanya sempurna. Layanan pelanggan juga sangat baik dan responsif."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dewi" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold text-gray-800">Dewi</div>
+                                <div class="text-sm text-gray-500">Pelanggan Baru</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 relative testimonial-card stagger-fade-in" style="animation-delay: 0.3s">
+                    <div class="absolute -top-4 -left-4 bg-red-600 text-white p-3 rounded-full">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="pt-6">
+                        <div class="flex mb-4">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6 italic">"Dari konsep hingga eksekusi, semuanya sempurna. Saya menerima pujian dari semua teman-teman saya tentang keindahan acara saya. Yang paling mengesankan adalah bagaimana tim Hapsah bisa mengatasi masalah teknis di menit-menit terakhir dengan sangat profesional tanpa membuat saya stres."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Rina" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold text-gray-800">Rina</div>
+                                <div class="text-sm text-gray-500">Pelanggan Setia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- All Testimonials -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 4 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 stagger-fade-in" style="animation-delay: 0.4s">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Lina" class="w-12 h-12 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex mb-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">"Kami memilih paket partial planning dan sangat puas dengan hasilnya. Tim Hapsah memberikan saran-saran yang sangat berharga dalam memilih vendor dan mengatur budget. Mereka benar-benar membantu kami menghemat biaya tanpa mengorbankan kualitas."</p>
+                            <div>
+                                <div class="font-semibold text-gray-800">Lina</div>
+                                <div class="text-sm text-gray-500">Pelanggan Setia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 5 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 stagger-fade-in" style="animation-delay: 0.5s">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/17.jpg" alt="Maya" class="w-12 h-12 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex mb-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">"Untuk pernikahan adat Jawa kami, Hapsah Wedding Organizer sangat memahami budaya dan tradisi yang harus dijaga. Mereka berhasil menggabungkan elemen tradisional dengan sentuhan modern yang elegan. Keluarga besar kami sangat terkesan dengan profesionalisme tim."</p>
+                            <div>
+                                <div class="font-semibold text-gray-800">Maya</div>
+                                <div class="text-sm text-gray-500">Pelanggan Setia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 6 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 stagger-fade-in" style="animation-delay: 0.6s">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Nina" class="w-12 h-12 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex mb-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">"Pengalaman kami dengan Hapsah Wedding Organizer benar-benar luar biasa. Mereka tidak hanya merencanakan acara kami, tetapi juga menjadi teman yang mendukung selama proses persiapan. Komunikasi mereka sangat baik dan responsif terhadap semua pertanyaan kami."</p>
+                            <div>
+                                <div class="font-semibold text-gray-800">Nina</div>
+                                <div class="text-sm text-gray-500">Pelanggan Setia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 7 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 stagger-fade-in" style="animation-delay: 0.7s">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Putri" class="w-12 h-12 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex mb-2">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="far fa-star text-gray-300"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">"Kami memiliki anggaran terbatas tapi tim Hapsah bisa membuat pernikahan kami terasa mewah dan istimewa. Mereka sangat kreatif dalam mengoptimalkan anggaran kami tanpa mengurangi kualitas acara."</p>
+                            <div>
+                                <div class="font-semibold text-gray-800">Putri</div>
+                                <div class="text-sm text-gray-500">Pelanggan Setia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="stagger-fade-in" style="animation-delay: 0.1s">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 playfair">Hubungi Kami</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Siap untuk mencoba pempek autentik dari Palembang? Hubungi kami sekarang!
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Telepon/WA</h3>
+                                <p class="text-gray-600">081263388109</p>
+                                <p class="text-sm text-gray-500">Senin - Sabtu, 09:00 - 17:00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Email</h3>
+                                <p class="text-gray-600">info@pempekadhwan.com</p>
+                                <p class="text-sm text-gray-500">Respons dalam 24 jam</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Alamat</h3>
+                                <p class="text-gray-600">Jl. Mansyurdin Gg. Anggrek Merah 6B, Medan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-3 rounded-full text-red-600">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Jam Operasional</h3>
+                                <p class="text-gray-600">Senin - Sabtu: 09:00 - 17:00</p>
+                                <p class="text-gray-600">Minggu: 10:00 - 15:00 (by appointment)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="font-semibold text-gray-800 mb-4">Ikuti Kami</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/pempekadhwan.medan/" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@pempekadhwan.medan" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.facebook.com/people/Pempekadhwan-Mdn/61577332456903/" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-8 stagger-fade-in" style="animation-delay: 0.2s">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 playfair">Formulir Konsultasi</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap *</label>
+                            <input
+                                type="text"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                placeholder="Masukkan nama Anda"
+                            >
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                <input
+                                    type="email"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                    placeholder="Masukkan email Anda"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Telepon *</label>
+                                <input
+                                    type="tel"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                    placeholder="Masukkan nomor telepon"
+                                >
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Acara *</label>
+                                <input
+                                    type="date"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Tamu *</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                    <option>Pilih jumlah tamu</option>
+                                    <option>50 - 100 tamu</option>
+                                    <option>100 - 200 tamu</option>
+                                    <option>200 - 300 tamu</option>
+                                    <option>300+ tamu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Anggaran Perkiraan</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option>Pilih perkiraan anggaran</option>
+                                <option>Rp 50 - 100 juta</option>
+                                <option>Rp 100 - 200 juta</option>
+                                <option>Rp 200 - 300 juta</option>
+                                <option>Rp 300 - 500 juta</option>
+                                <option>Rp 500 juta+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tema Pernikahan</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                <option>Pilih tema (opsional)</option>
+                                <option>Garden Wedding</option>
+                                <option>Beach Wedding</option>
+                                <option>Luxury Ballroom</option>
+                                <option>Rustic Chic</option>
+                                <option>Traditional</option>
+                                <option>Minimalist Elegance</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Pesan/Pertanyaan</label>
+                            <textarea
+                                rows="4"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                placeholder="Ceritakan tentang pernikahan impian Anda..."
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition-colors ripple"
+                        >
+                            <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://i.imgur.com/6KwJXkA.png" alt="Pempek Adhwan Logo" class="w-12 h-12">
+                        <div>
+                            <h3 class="text-2xl font-bold playfair">Pempek Adhwan</h3>
+                            <p class="text-gray-300">Medan</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Mewujudkan pernikahan impian Anda dengan sentuhan personal, kreativitas tanpa batas, 
+                        dan detail sempurna yang tak terlupakan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/pempekadhwan.medan/" class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-full transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@pempekadhwan.medan" class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-full transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/people/Pempekadhwan-Mdn/61577332456903/" class="bg-red-600 hover:bg-red-700 text-white p-2 rounded-full transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Layanan</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Full Wedding Planning</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Partial Planning</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Day-of Coordination</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Vendor Management</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Theme & Decor</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Wedding Stationery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Informasi</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Portfolio</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Testimoni</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-red-400 transition-colors">Karir</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 Pempek Adhwan Medan. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-red-400 transition-colors">Kebijakan Privasi</a>
+                        <a href="#" class="hover:text-red-400 transition-colors">Syarat & Ketentuan</a>
+                        <a href="#" class="hover:text-red-400 transition-colors">Peta Situs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-red-600 hover:bg-red-700 text-white p-3 rounded-full shadow-lg transition-colors z-40 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+            <div class="relative bg-white rounded-2xl max-w-md w-full p-8 text-center transform transition-all">
+                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-2xl text-green-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Terima Kasih!</h3>
+                <p class="text-gray-600 mb-6">
+                    Pesan Anda telah berhasil dikirim. Tim kami akan segera menghubungi Anda dalam waktu 24 jam.
+                </p>
+                <button id="close-modal" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-semibold transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Count up animation for stats
+        document.addEventListener('DOMContentLoaded', function() {
+            const countUpElements = document.querySelectorAll('.count-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const targetNumber = parseInt(target.getAttribute('data-target'));
+                        let count = 0;
+                        const duration = 2000;
+                        const step = targetNumber / (duration / 16);
+                        const timer = setInterval(() => {
+                            count += step;
+                            if (count >= targetNumber) {
+                                count = targetNumber;
+                                clearInterval(timer);
+                            }
+                            target.textContent = Math.floor(count);
+                        }, 16);
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            countUpElements.forEach(el => observer.observe(el));
+            // Stagger fade in animation
+            const staggerElements = document.querySelectorAll('.stagger-fade-in');
+            const staggerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        staggerObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            staggerElements.forEach(el => {
+                staggerObserver.observe(el);
+            });
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            // Modal functionality
+            const consultBtn = document.getElementById('consult-btn');
+            const successModal = document.getElementById('success-modal');
+            const closeModal = document.getElementById('close-modal');
+            consultBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                successModal.classList.remove('hidden');
+            });
+            closeModal.addEventListener('click', () => {
+                successModal.classList.add('hidden');
+            });
+            // Cursor effects
+            const cursor = document.getElementById('cursor');
+            const cursorDot = document.getElementById('cursor-dot');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+            document.addEventListener('mousedown', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+            });
+            document.addEventListener('mouseup', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+            });
+            // Ripple effect
+            document.querySelectorAll('.ripple').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const x = e.clientX - e.target.offsetLeft;
+                    const y = e.clientY - e.target.offsetTop;
+                    const ripples = document.createElement('span');
+                    ripples.style.left = x + 'px';
+                    ripples.style.top = y + 'px';
+                    this.appendChild(ripples);
+                    setTimeout(() => {
+                        ripples.remove();
+                    }, 600);
+                });
+            });
+            // Cart functionality
+            const cartBtn = document.getElementById('cart-btn');
+            const cartCount = document.getElementById('cart-count');
+            let cartItems = 0;
+            document.querySelectorAll('.fa-shopping-cart, .fa-arrow-right').forEach(btn => {
+                btn.closest('button').addEventListener('click', function(e) {
+                    if (this.querySelector('.fa-shopping-cart')) {
+                        cartItems++;
+                        cartCount.textContent = cartItems;
+                        cartCount.classList.remove('hidden');
+                        // Animation for cart count
+                        cartCount.style.transform = 'scale(1.5)';
+                        setTimeout(() => {
+                            cartCount.style.transform = 'scale(1)';
+                        }, 200);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
